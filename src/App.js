@@ -31,10 +31,18 @@ const App = () => {
         if (res.error) {
           setBookSearched([]);
         } else {
-          setBookSearched(res);
+          const data = res
+          data.forEach((book) => {
+            const bookFound = books.find((b) => b.id === book.id);
+            bookFound ? 
+              book.shelf = bookFound.shelf :
+              book.shelf = 'none'
+          });
+          setBookSearched(data);
         }
       });
     };
+
     query ? getSearchData() : setBookSearched([]);
   };
 
