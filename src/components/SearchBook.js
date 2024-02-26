@@ -5,12 +5,12 @@ const SearchBook = ({ books, updateShelf, searchBook}) => {
   const [query, setQuery] = useState('');
 
   const updateQuery = (value) => {
-    setQuery(value.trim());
+    setQuery(value);
+    searchBook(value.trim());
   };
-
   useEffect(() => {
     searchBook(query);
-  }, [query])
+  }, [])
 
   return (
     <div className='search-books'>
